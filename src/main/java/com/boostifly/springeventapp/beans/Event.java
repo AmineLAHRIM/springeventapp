@@ -27,14 +27,17 @@ public class Event implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
-    String name;
-    String address;
-    Date date;
-    String imageUrl;
-    String description;
+    private Long id;
+    private String name;
+    private String address;
+    private Date date;
+    private String imageUrl;
+    private String description;
+    @Column(columnDefinition = "boolean default false")
+    private boolean near;
     @Column(columnDefinition = "boolean default false")
     private boolean deleted;
+
 
     // here the relation between Models
     @OneToMany(targetEntity = UserEventDetail.class, mappedBy = "event", cascade = CascadeType.ALL)
@@ -110,6 +113,14 @@ public class Event implements Serializable {
 
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
+    }
+
+    public boolean isNear() {
+        return near;
+    }
+
+    public void setNear(boolean near) {
+        this.near = near;
     }
 
     public List<UserEventDetail> getUserEventDetails() {
