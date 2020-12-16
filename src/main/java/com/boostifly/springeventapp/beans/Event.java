@@ -31,6 +31,7 @@ public class Event implements Serializable {
     private String name;
     private String address;
     private Date date;
+    private double price;
     private String imageUrl;
     private String description;
     @Column(columnDefinition = "boolean default false")
@@ -97,6 +98,14 @@ public class Event implements Serializable {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getDescription() {
